@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get ':plataform/groups' => 'groups#index'
   get ':plataform/groups/:id' => 'groups#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

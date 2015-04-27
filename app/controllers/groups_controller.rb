@@ -12,6 +12,6 @@ class GroupsController < ApplicationController
   private
 
     def set_adapter
-      @adapter = GroupsAdapter.new(params[:plataform])
+      @adapter = GroupAdapter.new(params[:plataform])
     end
 end
