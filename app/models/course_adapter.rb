@@ -1,4 +1,4 @@
-class GroupAdapter < ContentAdapter
+class CourseAdapter < ContentAdapter
 
   def initialize(plataform)
     set_strategy(plataform)
@@ -6,7 +6,7 @@ class GroupAdapter < ContentAdapter
   end
 
   def set_strategy(plataform)
-    @strategy ||= plataform.camelize.constantize::GroupStrategy.new
+    @strategy ||= plataform.camelize.constantize::CourseStrategy.new
   end
 end
 

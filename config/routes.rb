@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
-  get ':plataform/groups' => 'groups#index'
-  get ':plataform/groups/:id' => 'groups#show'
+
+  # Courses routes
+  get ':system/courses' => 'courses#index'
+  get ':system/courses/:id' => 'courses#show'
+
+  # Events routes
+  get ':system/courses/:course_id/events' => 'events#index'
+  get ':system/courses/:course_id/events/:id' => 'events#show'
+
+  # Events routes
+  get ':system/courses/:course_id/topics' => 'topics#index'
+  get ':system/courses/:course_id/topics/:id' => 'topics#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

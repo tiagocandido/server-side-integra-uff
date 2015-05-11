@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GroupAdapterTest < ActiveSupport::TestCase
+class CourseAdapterTest < ActiveSupport::TestCase
 
   test "should initialize with a strategy" do
   end

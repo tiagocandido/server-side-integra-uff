@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'responders'
+gem 'httparty'
 gem 'sqlite3'
 
 group :development, :test do
