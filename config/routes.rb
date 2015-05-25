@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get ':system/courses/:course_id/topics' => 'topics#index'
   get ':system/courses/:course_id/topics/:id' => 'topics#show'
 
+  # Authentication routes
+  post ':system/authentication/login' => 'authentication#login'
+  get ':system/authentication/validate' => 'authentication#validate'
+  get ':system/authentication/logout' => 'authentication#logout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
