@@ -10,7 +10,8 @@ module ConexaoUff
     end
 
     def login
-      response = self.class.post(PATH_DE_LOGIN_DO_PORTAL, iduff: @options[:login], senha: @options[:password])
+      body = { iduff: @options[:login], senha: @options[:password] }
+      response = self.class.post(PATH_DE_LOGIN_DO_PORTAL, body: body)
       normalized_response deep_string_to_bool(response.parsed_response)
     end
 
@@ -38,7 +39,7 @@ module ConexaoUff
 
     def normalized_response(response)
       if response['autenticado']
-        {json: {token: response['token']}, status: :ok}
+        {json: {token: response['token_identificador']}, status: :ok}
       else
         {json: {}, status: :unauthorized}
       end

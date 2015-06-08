@@ -8,6 +8,6 @@ class AuthenticationController < ApplicationController
   private
 
   def set_adapter
-    @authentication = AuthenticationAdapter.new(params[:system])
+    @authentication = AuthenticationAdapter.new(params[:system], {login: params[:login], password: params[:password]})
   end
 end
