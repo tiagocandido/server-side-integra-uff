@@ -1,7 +1,7 @@
 module ConexaoUff
   class AuthenticationStrategy
     include HTTParty
-    base_uri 'https://sistemas.uff.br/portal'
+    base_uri 'http://homologacao.sti.uff.br/portal'
     PATH_DE_LOGIN_DO_PORTAL = '/ws/autenticacoes/login.json'
     PATH_DE_LOGOUT_DO_PORTAL = '/ws/autenticacoes/logout.json'
 

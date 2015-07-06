@@ -1,12 +1,12 @@
 class CourseAdapter < ContentAdapter
 
-  def initialize(plataform)
-    set_strategy(plataform)
+  def initialize(plataform, options = {})
+    set_strategy(plataform, options)
     super @strategy
   end
 
-  def set_strategy(plataform)
-    @strategy ||= plataform.camelize.constantize::CourseStrategy.new
+  def set_strategy(plataform, options)
+    @strategy ||= plataform.camelize.constantize::CourseStrategy.new(options)
   end
 end
 

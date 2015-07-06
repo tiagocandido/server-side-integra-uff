@@ -12,6 +12,6 @@ class CoursesController < ApplicationController
   private
 
     def set_adapter
-      @adapter = CourseAdapter.new(params[:system])
+      @adapter = CourseAdapter.new(params[:system], { token: request.headers["AUTHORIZATION"] })
     end
 end
