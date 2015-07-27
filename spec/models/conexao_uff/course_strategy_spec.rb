@@ -9,7 +9,7 @@ RSpec.describe ConexaoUff::CourseStrategy, :type => :model do
 
   it 'should list the courses' do
     VCR.use_cassette 'model/courses' do
-      courses = ConexaoUff::CourseStrategy.new({token: 'banana'}).all
+      courses = ConexaoUff::CourseStrategy.new(token: '').all
       expect(courses.first).to have_key(:system)
       expect(courses.first).to have_key(:system_id)
       expect(courses.first).to have_key(:name)
@@ -19,10 +19,10 @@ RSpec.describe ConexaoUff::CourseStrategy, :type => :model do
 
   it 'should find a courses' do
     courses = VCR.use_cassette 'model/courses' do
-      ConexaoUff::CourseStrategy.new({token: 'banana'}).all
+      ConexaoUff::CourseStrategy.new({token: ''}).all
     end
     VCR.use_cassette 'model/course' do
-      course = ConexaoUff::CourseStrategy.new({token: 'banana'}).find(courses.first[:system_id])
+      course = ConexaoUff::CourseStrategy.new({token: ''}).find(courses.first[:system_id])
       expect(course).to have_key(:system)
       expect(course).to have_key(:system_id)
       expect(course).to have_key(:name)

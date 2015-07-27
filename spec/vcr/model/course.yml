@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/api/v1//grupos/77947
+    body:
+      encoding: UTF-8
+      string: por_anosemestres=20151
+    headers:
+      Authorization:
+      - Token token=af125ed0a98339fdfb305a8903bbad7fb2c56c7a
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"38e62997a994564a751c7d03c9534d33"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8d8f092b-8ef3-4cc6-a9b9-c5c3302cf82f
+      X-Runtime:
+      - '0.087513'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.5/2014-11-13)
+      Date:
+      - Mon, 27 Jul 2015 20:46:00 GMT
+      Content-Length:
+      - '346'
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - _conexao_uff_session=UHJCV1IxU2ZMamdjUVNOY0k5S1U4cU01a3RDWjkvRDdmbko4eEdLTWNjYWttRGJtOUN6YjVGL0VMZ1UzZk9VNnJuRzZzWnhOSmJsRHFwby9sWUZ6dDByYTdOTUJhd1Z4SHJ4cFZLc1UvL0xHTGYwbmpLVkVBRWJnek5kdGMvSVAtLXRLREprT0V6dlN4d0s0ZUJUdzJVYmc9PQ%3D%3D--783343fb30d86f9024292034562de5dca2e85f57;
+        path=/; HttpOnly
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJpZCI6Nzc5NDcsIm5vbWUiOiJQcm9wcmllZGFkZSBJbWF0ZXJpYWwgZSBJ
+        bmZvcm3DoXRpY2EgLSBQMSIsImRlc2NyaWNhbyI6bnVsbCwiY3JlYXRlZF9h
+        dCI6IjIwMTUtMDMtMTZUMTc6Mjg6MDguMDAwLTAzOjAwIiwidXBkYXRlZF9h
+        dCI6IjIwMTUtMDMtMTZUMTc6Mjg6MDguMDAwLTAzOjAwIiwibG9jYWxpZGFk
+        ZSI6Ik5pdGVyw7NpIiwiaWRncnVwbyI6IlNEVjAwMDY2LVAxLU5pdGVyw7Np
+        LTIwMTUxIiwic3RhdHVzIjoiQXRpdm8iLCJhbm9zZW1lc3RyZSI6IjIwMTUv
+        MSIsImJpYmxpb2dyYWZpYSI6IkFpbmRhIG7Do28gaW5mb3JtYWRhLiIsImV2
+        ZW50b3NfY291bnQiOjEsInR1cm1hX2lkIjpudWxsfQ==
+    http_version: 
+  recorded_at: Mon, 27 Jul 2015 20:46:00 GMT
+recorded_with: VCR 2.9.3
