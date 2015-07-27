@@ -2,16 +2,16 @@ class EventsController < ApplicationController
   before_filter :set_adapter
 
   def index
-    render json: @adapter.collection(params[:course_id])
+    render json: @adapter.collection
   end
 
   def show
-    render json: @adapter.member(params[:course_id], params[:id])
+    render json: @adapter.member(params[:id])
   end
 
   private
 
     def set_adapter
-      @adapter = EventAdapter.new(params[:system])
+      @adapter = EventAdapter.new(params[:system], { token: request.headers["AUTHORIZATION"] })
     end
 end

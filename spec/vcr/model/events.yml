@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:3001/api/v1//eventos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token=12066aa34682c9880d1694515801328016d57084
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"a31ec1cf992397f79682c66bd03a6cdd"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 08af2be4-ade7-4deb-aa63-6cef252b4443
+      X-Runtime:
+      - '0.074734'
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.1.5/2014-11-13)
+      Date:
+      - Mon, 27 Jul 2015 21:29:09 GMT
+      Content-Length:
+      - '494'
+      Connection:
+      - Keep-Alive
+      Set-Cookie:
+      - _conexao_uff_session=Um1OTkl2NWVhZnRtckMrSG0xR3VMMHo2cHpsRVhqS0tMOVBIMkNJT2J4dnhjVnRsK2YrWGhVNmlaejdzbDBlK3c5cVBGQWh2RXRCTDhEQ0lPeXppNmh3NjQ1ZWVTNlN2Qmd2TlNjVE5QR2Z0RGtCWkRRRWpLWW00T1NiVmtZeTQtLXhDenFubW11aWU2TktzUlc5UkNRWlE9PQ%3D%3D--f3bb597423ac85fbd921e21d05314eff7f4efdeb;
+        path=/; HttpOnly
+    body:
+      encoding: UTF-8
+      string: '[{"id":1729,"grupo_id":77947,"inicio":"2015-07-15T21:41:00.000-03:00","fim":"2015-07-15T21:41:00.000-03:00","titulo":"Evento
+        1","url":"","observacoes":"","created_at":"2015-07-15T21:41:41.000-03:00","updated_at":"2015-07-15T21:41:41.000-03:00"},{"id":1730,"grupo_id":78979,"inicio":"2015-07-15T21:42:00.000-03:00","fim":"2015-07-15T21:42:00.000-03:00","titulo":"Evento
+        De PA2","url":"","observacoes":"","created_at":"2015-07-15T21:42:36.000-03:00","updated_at":"2015-07-15T21:42:36.000-03:00"}]'
+    http_version: 
+  recorded_at: Mon, 27 Jul 2015 21:29:09 GMT
+recorded_with: VCR 2.9.3

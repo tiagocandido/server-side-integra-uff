@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get ':system/courses/:id' => 'courses#show'
 
   # Events routes
-  get ':system/courses/:course_id/events' => 'events#index'
-  get ':system/courses/:course_id/events/:id' => 'events#show'
+  get ':system/events' => 'events#index'
+  get ':system/events/:id' => 'events#show'
 
   # Events routes
   get ':system/courses/:course_id/topics' => 'topics#index'

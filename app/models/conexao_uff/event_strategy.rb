@@ -1,15 +1,20 @@
 module ConexaoUff
   class EventStrategy
     include HTTParty
-    API_URL = 'http://homologacao.sti.uff.br/conexaouff/api/v1/'
+    #API_URL = 'http://homologacao.sti.uff.br/conexaouff/api/v1/'
+    API_URL = 'http://localhost:3001/api/v1/'
 
-    def all(grupo_id)
-      events = fetch("/grupos/#{grupo_id}/eventos")
+    def initialize(params)
+      @params = params
+    end
+
+    def all
+      events = fetch("/eventos")
       events.map { |event| format event }
     end
 
-    def find(grupo_id, id)
-      event = fetch("/grupos/#{grupo_id}/eventos/" + id)
+    def find(id)
+      event = fetch("/eventos/#{id}")
       format(event)
     end
 
@@ -27,7 +32,7 @@ module ConexaoUff
       end
 
       def fetch(path)
-        response = HTTParty.get(API_URL + path)
+        response = HTTParty.get(API_URL + path, { headers: { 'AUTHORIZATION' => "#{@params[:token]}" } })
         JSON.parse(response.body)
       end
   end
