@@ -30,7 +30,7 @@ module ConexaoUff
     end
 
     def fetch(path)
-      response = HTTParty.get(API_URL + path, { body: {por_anosemestres: '20151'} , headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" }})
+      response = HTTParty.get(API_URL + path, { body: {por_anosemestres: '20151'} , headers: { 'AUTHORIZATION' => "#{@params[:token]}" }})
       JSON.parse(response.body)
     end
   end
