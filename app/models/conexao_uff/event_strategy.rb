@@ -27,7 +27,7 @@ module ConexaoUff
           ends: attributes['fim'],
           name: attributes['titulo'],
           info: attributes['info'],
-          group_id: attributes['grupo_id']
+          course_id: attributes['grupo_id']
         }
       end
 

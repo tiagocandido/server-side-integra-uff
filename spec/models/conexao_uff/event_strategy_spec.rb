@@ -32,7 +32,7 @@ RSpec.describe ConexaoUff::EventStrategy, :type => :model do
         expect(event).to have_key(:ends)
         expect(event).to have_key(:name)
         expect(event).to have_key(:info)
-        expect(event).to have_key(:group_id)
+        expect(event).to have_key(:course_id)
       end
     end
   end
