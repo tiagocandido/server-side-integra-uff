@@ -12,6 +12,6 @@ class EventsController < ApplicationController
   private
 
     def set_adapter
-      @adapter = EventAdapter.new(params[:system], { token: request.headers["AUTHORIZATION"] })
+      @adapter = EventAdapter.new(params[:system], { token: params[:token] })
     end
 end
