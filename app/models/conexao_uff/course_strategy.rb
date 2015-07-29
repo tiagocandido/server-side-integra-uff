@@ -10,17 +10,17 @@ module ConexaoUff
 
     def all
       courses = fetch('/grupos')
-      courses.map { |course| format course }
+      courses.map { |course| format_course course }
     end
 
     def find(id)
       course = fetch("/grupos/#{id}")
-      format(course)
+      format_course(course)
     end
 
     private
 
-    def format(attributes)
+    def format_course(attributes)
       {
         system: 'conexao_uff',
         system_id: attributes['id'],
@@ -30,7 +30,7 @@ module ConexaoUff
     end
 
     def fetch(path)
-      response = HTTParty.get(API_URL + path, { body: {por_anosemestres: '20151'} , headers: { 'AUTHORIZATION' => "#{@params[:token]}" }})
+      response = HTTParty.get(API_URL + path, { body: {por_anosemestres: '20151'} , headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" }})
       JSON.parse(response.body)
     end
   end

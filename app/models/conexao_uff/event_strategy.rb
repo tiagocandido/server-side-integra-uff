@@ -10,17 +10,17 @@ module ConexaoUff
 
     def all
       events = fetch("/eventos")
-      events.map { |event| format event }
+      events.map { |event| format_event event }
     end
 
     def find(id)
       event = fetch("/eventos/#{id}")
-      format(event)
+      format_event(event)
     end
 
     private
 
-      def format(attributes)
+      def format_event(attributes)
         { system: "conexao_uff",
           system_id: attributes["id"],
           starts: attributes["inicio"],
@@ -32,7 +32,7 @@ module ConexaoUff
       end
 
       def fetch(path)
-        response = HTTParty.get(API_URL + path, { headers: { 'AUTHORIZATION' => "#{@params[:token]}" } })
+        response = HTTParty.get(API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
         JSON.parse(response.body)
       end
   end
