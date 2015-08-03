@@ -21,8 +21,9 @@ RSpec.describe ConexaoUff::CourseStrategy, :type => :model do
     it 'should list the courses' do
       first_course = courses[:body].first
 
-      expect(first_course[:system_id]).to eq 77947
+      expect(first_course[:id]).to eq 'conexao_uff-77947'
       expect(first_course).to have_key(:system)
+      expect(first_course).to have_key(:system_id)
       expect(first_course).to have_key(:name)
       expect(first_course).to have_key(:info)
     end
@@ -38,8 +39,9 @@ RSpec.describe ConexaoUff::CourseStrategy, :type => :model do
     end
 
     it 'should find a courses' do
-      expect(course[:body][:system_id]).to eq 77947
+      expect(course[:body][:id]).to eq 'conexao_uff-77947'
       expect(course[:body]).to have_key(:system)
+      expect(course[:body]).to have_key(:system_id)
       expect(course[:body]).to have_key(:name)
       expect(course[:body]).to have_key(:info)
     end

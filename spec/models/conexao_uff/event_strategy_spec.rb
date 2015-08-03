@@ -18,8 +18,9 @@ RSpec.describe ConexaoUff::EventStrategy, :type => :model do
 
     it 'should list the events' do
         first_event = events[:body].first
-        expect(first_event[:system_id]).to eq 1729
+        expect(first_event[:id]).to eq 'conexao_uff-1729'
         expect(first_event).to have_key(:system)
+        expect(first_event).to have_key(:system_id)
         expect(first_event).to have_key(:name)
         expect(first_event).to have_key(:info)
     end
@@ -35,8 +36,9 @@ RSpec.describe ConexaoUff::EventStrategy, :type => :model do
     end
 
     it 'should find an event' do
-      expect(event[:body][:system_id]).to eq 1729
+      expect(event[:body][:id]).to eq 'conexao_uff-1729'
       expect(event[:body]).to have_key(:system)
+      expect(event[:body]).to have_key(:system_id)
       expect(event[:body]).to have_key(:starts)
       expect(event[:body]).to have_key(:ends)
       expect(event[:body]).to have_key(:name)

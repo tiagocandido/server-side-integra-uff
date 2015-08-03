@@ -28,6 +28,7 @@ module ConexaoUff
 
     def format_course(attributes)
       {
+        id: "conexao_uff-#{attributes['id']}",
         system: 'conexao_uff',
         system_id: attributes['id'],
         name: "#{attributes['nome']} - #{attributes['anosemestre']}",

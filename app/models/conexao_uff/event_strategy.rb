@@ -27,7 +27,9 @@ module ConexaoUff
     private
 
       def format_event(attributes)
-        { system: "conexao_uff",
+        {
+          id: "conexao_uff-#{attributes['id']}",
+          system: "conexao_uff",
           system_id: attributes["id"],
           starts: attributes["inicio"],
           ends: attributes['fim'],
