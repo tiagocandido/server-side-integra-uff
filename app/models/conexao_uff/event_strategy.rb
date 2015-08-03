@@ -9,13 +9,19 @@ module ConexaoUff
     end
 
     def all
-      events = fetch("/eventos")
-      events.map { |event| format_event event }
+      response = fetch("/eventos")
+      if response[:code] == 200
+        response[:body] = JSON.parse(response[:body]).map { |event| format_event event }
+      end
+      response
     end
 
     def find(id)
-      event = fetch("/eventos/#{id}")
-      format_event(event)
+      response = fetch("/eventos/#{id}")
+      if response[:code] == 200
+        response[:body] = format_event(JSON.parse(response[:body]))
+      end
+      response
     end
 
     private
@@ -33,7 +39,8 @@ module ConexaoUff
 
       def fetch(path)
         response = HTTParty.get(API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
-        JSON.parse(response.body)
+
+        { code: response.code, body: response.body }
       end
   end
 end

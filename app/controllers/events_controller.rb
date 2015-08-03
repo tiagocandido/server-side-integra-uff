@@ -2,11 +2,15 @@ class EventsController < ApplicationController
   before_filter :set_adapter
 
   def index
-    render json: @adapter.collection
+    collection = @adapter.collection
+
+    render json: collection[:body], status: collection[:status]
   end
 
   def show
-    render json: @adapter.member(params[:id])
+    member = @adapter.member(params[:id])
+
+    render json: member[:body], status: member[:status]
   end
 
   private

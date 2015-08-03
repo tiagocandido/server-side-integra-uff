@@ -12,27 +12,36 @@ RSpec.describe ConexaoUff::EventStrategy, :type => :model do
   end
 
   describe '#all' do
+    it 'should return the code' do
+      expect(events[:code]).to eq 200
+    end
+
     it 'should list the events' do
-        expect(events.first).to have_key(:system)
-        expect(events.first).to have_key(:system_id)
-        expect(events.first).to have_key(:name)
-        expect(events.first).to have_key(:info)
+        first_event = events[:body].first
+        expect(first_event[:system_id]).to eq 1729
+        expect(first_event).to have_key(:system)
+        expect(first_event).to have_key(:name)
+        expect(first_event).to have_key(:info)
     end
   end
 
   describe '#find' do
     let(:event) do
-      VCR.use_cassette('model/event') { strategy.find(events.first[:system_id]) }
+      VCR.use_cassette('model/event') { strategy.find(events[:body].first[:system_id]) }
+    end
+
+    it 'should return the code' do
+      expect(event[:code]).to eq 200
     end
 
     it 'should find an event' do
-      expect(event).to have_key(:system)
-      expect(event).to have_key(:system_id)
-      expect(event).to have_key(:starts)
-      expect(event).to have_key(:ends)
-      expect(event).to have_key(:name)
-      expect(event).to have_key(:info)
-      expect(event).to have_key(:course_id)
+      expect(event[:body][:system_id]).to eq 1729
+      expect(event[:body]).to have_key(:system)
+      expect(event[:body]).to have_key(:starts)
+      expect(event[:body]).to have_key(:ends)
+      expect(event[:body]).to have_key(:name)
+      expect(event[:body]).to have_key(:info)
+      expect(event[:body]).to have_key(:course_id)
     end
   end
 
