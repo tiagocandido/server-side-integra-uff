@@ -1,32 +1,47 @@
 require 'rails_helper'
 
 RSpec.describe ConexaoUff::CourseStrategy, :type => :model do
+  subject(:strategy) { ConexaoUff::CourseStrategy.new(token: '') }
+
   it 'should initialize with options' do
     options = {}
     strategy = ConexaoUff::CourseStrategy.new options
     expect(strategy).to respond_to(:all)
   end
 
-  it 'should list the courses' do
-    VCR.use_cassette 'model/courses' do
-      courses = ConexaoUff::CourseStrategy.new(token: '').all
-      expect(courses.first).to have_key(:system)
-      expect(courses.first).to have_key(:system_id)
-      expect(courses.first).to have_key(:name)
-      expect(courses.first).to have_key(:info)
+  let!(:courses) do
+    VCR.use_cassette('model/courses') { strategy.all }
+  end
+
+  describe '#all' do
+    it 'should return the code' do
+      expect(courses[:code]).to eq 200
+    end
+
+    it 'should list the courses' do
+      first_course = courses[:body].first
+
+      expect(first_course[:system_id]).to eq 77947
+      expect(first_course).to have_key(:system)
+      expect(first_course).to have_key(:name)
+      expect(first_course).to have_key(:info)
     end
   end
 
-  it 'should find a courses' do
-    courses = VCR.use_cassette 'model/courses' do
-      ConexaoUff::CourseStrategy.new({token: ''}).all
+  describe '#find' do
+    let(:course) do
+      VCR.use_cassette('model/course') { strategy.find(courses[:body].first[:system_id]) }
     end
-    VCR.use_cassette 'model/course' do
-      course = ConexaoUff::CourseStrategy.new({token: ''}).find(courses.first[:system_id])
-      expect(course).to have_key(:system)
-      expect(course).to have_key(:system_id)
-      expect(course).to have_key(:name)
-      expect(course).to have_key(:info)
+
+    it 'should return the code' do
+      expect(course[:code]).to eq 200
+    end
+
+    it 'should find a courses' do
+      expect(course[:body][:system_id]).to eq 77947
+      expect(course[:body]).to have_key(:system)
+      expect(course[:body]).to have_key(:name)
+      expect(course[:body]).to have_key(:info)
     end
   end
 end

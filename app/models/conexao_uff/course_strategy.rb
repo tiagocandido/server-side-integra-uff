@@ -9,13 +9,19 @@ module ConexaoUff
     end
 
     def all
-      courses = fetch('/grupos')
-      courses.map { |course| format_course course }
+      response = fetch('/grupos')
+      if response[:code] == 200
+        response[:body] = JSON.parse(response[:body]).map { |course| format_course course }
+      end
+      response
     end
 
     def find(id)
-      course = fetch("/grupos/#{id}")
-      format_course(course)
+      response = fetch("/grupos/#{id}")
+      if response[:code] == 200
+        response[:body] = format_course(JSON.parse(response[:body]))
+      end
+      response
     end
 
     private
@@ -31,7 +37,8 @@ module ConexaoUff
 
     def fetch(path)
       response = HTTParty.get(API_URL + path, { body: {por_anosemestres: '20151'} , headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" }})
-      JSON.parse(response.body)
+
+      { code: response.code, body: response.body }
     end
   end
 end
