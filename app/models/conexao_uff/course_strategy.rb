@@ -13,7 +13,7 @@ module ConexaoUff
       if response[:code] == 200
         response[:body] = JSON.parse(response[:body]).map { |course| format_course course }
       else
-        response[:body] = { message: reponse[:body] }
+        response[:body] = { message: response[:body] }
       end
       response
     end
