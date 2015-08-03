@@ -12,6 +12,8 @@ module ConexaoUff
       response = fetch("/eventos")
       if response[:code] == 200
         response[:body] = JSON.parse(response[:body]).map { |event| format_event event }
+      else
+        response[:body] = { message: reponse[:body] }
       end
       response
     end

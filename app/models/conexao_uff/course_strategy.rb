@@ -12,6 +12,8 @@ module ConexaoUff
       response = fetch('/grupos')
       if response[:code] == 200
         response[:body] = JSON.parse(response[:body]).map { |course| format_course course }
+      else
+        response[:body] = { message: reponse[:body] }
       end
       response
     end
