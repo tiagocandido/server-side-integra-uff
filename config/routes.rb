@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get ':system/events' => 'events#index'
   get ':system/events/:id' => 'events#show'
 
-  # Events routes
-  get ':system/courses/:course_id/topics' => 'topics#index'
-  get ':system/courses/:course_id/topics/:id' => 'topics#show'
+  # Topics routes
+  get ':system/topics' => 'topics#index'
+  get ':system/topics/:id' => 'topics#show'
 
   # Authentication routes
   post ':system/authentication/login' => 'authentication#login'

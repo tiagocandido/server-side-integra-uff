@@ -2,16 +2,18 @@ class TopicsController < ApplicationController
   before_filter :set_adapter
 
   def index
-    render json: @adapter.collection(params[:course_id])
+    collection = @adapter.collection
+    render json: collection[:body], status: collection[:code]
   end
 
   def show
-    render json: @adapter.member(params[:course_id], params[:id])
+    member = @adapter.member(params[:id])
+    render json: member[:body], status: member[:code]
   end
 
   private
 
     def set_adapter
-      @adapter = TopicAdapter.new(params[:system])
+      @adapter = TopicAdapter.new(params[:system], { token: params[:token] })
     end
 end

@@ -3,6 +3,10 @@ module ConexaoUff
     include HTTParty
     API_URL = 'http://homologacao.sti.uff.br/conexaouff/api/v1/'
 
+    def initialize(params)
+      @params = params
+    end
+
     def all(grupo_id)
       topics = fetch("/grupos/#{grupo_id}/topicos")
       topics.map { |topic| format topic }
