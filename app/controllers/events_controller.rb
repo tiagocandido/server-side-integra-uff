@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
   def show
     member = @adapter.member(params[:id])
-    render json: member[:body], status: member[:status]
+    render json: member[:body], status: member[:code]
   end
 
   private
