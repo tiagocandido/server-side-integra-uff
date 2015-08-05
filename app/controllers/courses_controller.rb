@@ -8,12 +8,12 @@ class CoursesController < ApplicationController
 
   def show
     member = @adapter.member(params[:id])
-    render json: member[:body], status: member[:status]
+    render json: member[:body], status: member[:code]
   end
 
   private
 
-  def set_adapter
-    @adapter = CourseAdapter.new(params[:system], { token: params[:token] })
-  end
+    def set_adapter
+      @adapter = CourseAdapter.new(params[:system], { token: params[:token] })
+    end
 end
