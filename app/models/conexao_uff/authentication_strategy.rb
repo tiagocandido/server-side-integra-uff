@@ -4,6 +4,7 @@ module ConexaoUff
     base_uri 'http://homologacao.sti.uff.br/portal'
     PATH_DE_LOGIN_DO_PORTAL = '/ws/autenticacoes/login.json'
     PATH_DE_LOGOUT_DO_PORTAL = '/ws/autenticacoes/logout.json'
+    PATH_DE_CONSULTA_DO_PORTAL = '/ws/autenticacoes/consulta.json'
 
     def initialize(options)
       @options = options
@@ -18,6 +19,11 @@ module ConexaoUff
     def logout
       response = self.class.get(PATH_DE_LOGOUT_DO_PORTAL, @options[:token])
       deep_string_to_bool(response).parsed_response
+    end
+
+    def validation(token)
+      response = self.class.get(PATH_DE_CONSULTA_DO_PORTAL, token: token)
+      deep_string_to_bool(reponse).parsed_response
     end
 
     private
