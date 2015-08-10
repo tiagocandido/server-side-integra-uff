@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # Authentication routes
   post ':system/authentication/login' => 'authentication#login'
-  get ':system/authentication/validate' => 'authentication#validate'
+  get ':system/authentication/validation' => 'authentication#validation'
   get ':system/authentication/logout' => 'authentication#logout'
 
   # The priority is based upon order of creation: first created -> highest priority.

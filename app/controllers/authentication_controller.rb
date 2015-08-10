@@ -5,6 +5,10 @@ class AuthenticationController < ApplicationController
     render @authentication.login
   end
 
+  def validation
+    render @authentication.validation params[:token]
+  end
+
   private
 
   def set_adapter

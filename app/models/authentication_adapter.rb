@@ -1,11 +1,15 @@
 class AuthenticationAdapter
 
   def initialize(platform, options = {})
-    set_strategy(platform, options)
+    set_strategy platform, options
   end
 
   def login
     @strategy.login
+  end
+
+  def validation(token)
+    @strategy.validation token
   end
 
   def logout
