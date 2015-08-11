@@ -13,7 +13,7 @@ module ConexaoUff
     def login
       body = { iduff: @options[:login], senha: @options[:password] }
       response = self.class.post(PATH_DE_LOGIN_DO_PORTAL, body: body)
-      normalized_response deep_string_to_bool(response.parsed_response)
+      normalized_login_response deep_string_to_bool(response.parsed_response)
     end
 
     def logout
@@ -23,7 +23,7 @@ module ConexaoUff
 
     def validation(token)
       response = self.class.get(PATH_DE_CONSULTA_DO_PORTAL, token: token)
-      deep_string_to_bool(reponse).parsed_response
+      normalized_validation_response deep_string_to_bool(response.parsed_response)
     end
 
     private
@@ -43,12 +43,16 @@ module ConexaoUff
       hash
     end
 
-    def normalized_response(response)
+    def normalized_login_response(response)
       if response['autenticado']
-        {json: {token: response['token_identificador']}, status: :ok}
+        { json: { token: response['token_identificador'] }, status: :ok }
       else
-        {json: {}, status: :unauthorized}
+        { json: {}, status: :unauthorized }
       end
+    end
+
+    def normalized_validation_response(response)
+        { json: { valid: response['valido'] } }
     end
   end
 end
