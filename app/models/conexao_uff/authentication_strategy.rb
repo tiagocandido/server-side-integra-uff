@@ -22,7 +22,8 @@ module ConexaoUff
     end
 
     def validation(token)
-      response = self.class.get(PATH_DE_CONSULTA_DO_PORTAL, token: token)
+      body = { token: token }
+      response = self.class.get(PATH_DE_CONSULTA_DO_PORTAL, body: body)
       normalized_validation_response deep_string_to_bool(response.parsed_response)
     end
 
