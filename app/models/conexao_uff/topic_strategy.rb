@@ -37,7 +37,7 @@ module ConexaoUff
           updated_at: attributes['updated_at'],
           name: attributes['nome'],
           author: attributes['usuario']['nome'],
-          group_id: "conexao_uff-#{attributes['grupo_id']}"
+          course_id: "conexao_uff-#{attributes['grupo_id']}"
         }
       end
 
