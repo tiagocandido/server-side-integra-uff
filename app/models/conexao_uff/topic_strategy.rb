@@ -29,13 +29,15 @@ module ConexaoUff
     private
 
       def format_topic(attributes)
-        { system: "conexao_uff",
+        {
+          id: "conexao_uff-#{attributes['id']}",
+          system: "conexao_uff",
           system_id: attributes["id"],
           created_at: attributes["created_at"],
           updated_at: attributes['updated_at'],
           name: attributes['nome'],
-          creator_id: attributes['usuario_id'],
-          group_id: attributes['grupo_id']
+          author: attributes['usuario']['nome'],
+          group_id: "conexao_uff-#{attributes['grupo_id']}"
         }
       end
 
