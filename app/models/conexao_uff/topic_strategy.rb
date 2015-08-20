@@ -6,6 +6,7 @@ module ConexaoUff
 
     def initialize(params)
       @params = params
+      @answers_formatter = AnswersFormatter.new
     end
 
     def all
@@ -37,7 +38,8 @@ module ConexaoUff
           updated_at: attributes['updated_at'],
           name: attributes['nome'],
           author: attributes['usuario']['nome'],
-          course_id: "conexao_uff-#{attributes['grupo_id']}"
+          course_id: "conexao_uff-#{attributes['grupo_id']}",
+          answers: @answers_formatter.format(attributes['respostas'])
         }
       end
 
