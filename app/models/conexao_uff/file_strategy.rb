@@ -35,6 +35,7 @@ module ConexaoUff
           system_id: attributes["id"],
           description: attributes["descricao"],
           course_id: "conexao_uff-#{attributes['grupo_id']}",
+          owner: attributes['usuario_nome'],
           file_name: attributes["anexo_file_name"],
           content_type: attributes["anexo_content_type"],
           file_size: attributes["anexo_file_size"],
