@@ -11,7 +11,7 @@ module ConexaoUff
     def all
       response = fetch("/arquivos")
       if response[:code] == 200
-        response[:body] = JSON.parse(response[:body]).map { |event| format_event event }
+        response[:body] = JSON.parse(response[:body]).map { |file| format_file file }
       else
         response[:body] = { message: response[:body] }
       end
