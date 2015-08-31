@@ -33,7 +33,6 @@ module ConexaoUff
           id: "conexao_uff-#{attributes['id']}",
           system: "conexao_uff",
           system_id: attributes["id"],
-          starts: attributes["inicio"],
           description: attributes["descricao"],
           course_id: attributes["grupo_id"],
           file_name: attributes["anexo_file_name"],
