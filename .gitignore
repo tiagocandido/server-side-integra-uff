@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 /coverage/
+
+# Ignore Apple OSX DS_Store file
+.DS_Store
