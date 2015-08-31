@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get ':system/topics' => 'topics#index'
   get ':system/topics/:id' => 'topics#show'
 
+  # Files routes
+  get ':system/files' => 'files#index'
+  get ':system/files/:id' => 'files#show'
+
   # Authentication routes
   post ':system/authentication/login' => 'authentication#login'
   get ':system/authentication/validation' => 'authentication#validation'
