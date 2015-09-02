@@ -1,8 +1,6 @@
 module ConexaoUff
   class FileStrategy
     include HTTParty
-    #API_URL = 'http://homologacao.sti.uff.br/conexaouff/api/v1/'
-    API_URL = 'http://localhost:3001/api/v1/'
 
     def initialize(params)
       @params = params
@@ -46,7 +44,7 @@ module ConexaoUff
     end
 
     def fetch(path)
-      response = HTTParty.get(API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
+      response = HTTParty.get(ConexaoUff::API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
 
       { code: response.code, body: response.body }
     end
