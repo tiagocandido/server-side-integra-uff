@@ -8,6 +8,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'responders'
 gem 'httparty'
+gem 'rack-cors', require:'rack/cors'
 
 group :development, :test do
   gem 'rspec-rails'
