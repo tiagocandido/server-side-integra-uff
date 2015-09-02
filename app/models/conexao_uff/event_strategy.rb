@@ -35,7 +35,7 @@ module ConexaoUff
           ends: attributes['fim'],
           name: attributes['titulo'],
           info: attributes['info'],
-          course_id: attributes['grupo_id']
+          course_id: "conexao_uff-#{attributes['grupo_id']}"
         }
       end
 
