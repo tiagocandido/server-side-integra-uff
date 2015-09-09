@@ -12,8 +12,8 @@ class AuthenticationAdapter
     @strategy.validation token
   end
 
-  def logout
-    @strategy.logout
+  def logout(token)
+    @strategy.logout token
   end
 
   private

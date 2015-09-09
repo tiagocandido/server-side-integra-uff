@@ -5,6 +5,10 @@ class AuthenticationController < ApplicationController
     render @authentication.login
   end
 
+  def logout
+    render @authentication.logout params[:token]
+  end
+
   def validation
     render @authentication.validation params[:token]
   end
