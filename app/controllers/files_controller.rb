@@ -3,6 +3,6 @@ class FilesController < ContentsController
   private
 
   def set_adapter
-    @adapter = FileAdapter.new(params[:system], { token: params[:token] })
+    @adapter = FileAdapter.new(params[:system], params.except(:system) )
   end
 end

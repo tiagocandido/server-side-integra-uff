@@ -42,7 +42,9 @@ module ConexaoUff
       end
 
       def fetch(path)
-        response = HTTParty.get(ConexaoUff::API_URL + path, { body: { por_anosemestre: '20151' }, headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
+        scopes =  {por_anosemestres: '20151'}
+        scopes[:atualizado_desde] = @params[:last_sync] if @params.key? :last_sync
+        response = HTTParty.get(ConexaoUff::API_URL + path, { body: scopes, headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
 
         { code: response.code, body: response.body }
       end
