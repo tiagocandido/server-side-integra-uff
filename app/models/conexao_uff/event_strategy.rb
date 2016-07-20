@@ -1,6 +1,5 @@
 module ConexaoUff
-  class EventStrategy
-    include HTTParty
+  class EventStrategy < BaseStrategy
 
     def initialize(params)
       @params = params
@@ -37,12 +36,6 @@ module ConexaoUff
           info: attributes['info'],
           course_id: "conexao_uff-#{attributes['grupo_id']}"
         }
-      end
-
-      def fetch(path)
-        response = HTTParty.get(ConexaoUff::API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
-
-        { code: response.code, body: response.body }
       end
   end
 end

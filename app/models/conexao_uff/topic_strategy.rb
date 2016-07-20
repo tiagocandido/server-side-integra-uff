@@ -1,6 +1,5 @@
 module ConexaoUff
-  class TopicStrategy
-    include HTTParty
+  class TopicStrategy < BaseStrategy
 
     def initialize(params)
       @params = params
@@ -8,7 +7,7 @@ module ConexaoUff
     end
 
     def all
-      response = fetch("/topicos")
+      response = fetch("/topicos", true)
       if response[:code] == 200
         response[:body] = JSON.parse(response[:body]).map { |topic| format_topic topic }
       else
@@ -18,7 +17,7 @@ module ConexaoUff
     end
 
     def find(id)
-      response = fetch("/topicos/#{id}")
+      response = fetch("/topicos/#{id}", true)
       if response[:code] == 200
         response[:body] = format_topic(JSON.parse(response[:body]))
       end
@@ -39,12 +38,6 @@ module ConexaoUff
           course_id: "conexao_uff-#{attributes['grupo_id']}",
           answers: @answers_formatter.format(attributes['respostas'])
         }
-      end
-
-      def fetch(path)
-        response = HTTParty.get(ConexaoUff::API_URL + path, { body: { por_anosemestre: '20151' }, headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
-
-        { code: response.code, body: response.body }
       end
   end
 end

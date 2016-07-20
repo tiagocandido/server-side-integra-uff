@@ -1,6 +1,5 @@
 module ConexaoUff
-  class FileStrategy
-    include HTTParty
+  class FileStrategy < BaseStrategy
 
     def initialize(params)
       @params = params
@@ -41,12 +40,6 @@ module ConexaoUff
           created_at: attributes["created_at"],
           updated_at: attributes["anexo_updated_at"]
       }
-    end
-
-    def fetch(path)
-      response = HTTParty.get(ConexaoUff::API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
-
-      { code: response.code, body: response.body }
     end
   end
 end
