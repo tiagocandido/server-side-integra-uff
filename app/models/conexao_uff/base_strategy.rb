@@ -2,6 +2,24 @@ module ConexaoUff
   class BaseStrategy
     include HTTParty
 
+    def all
+      response = fetch(@path)
+      if response[:code] == 200
+        response[:body] = JSON.parse(response[:body]).map { |resource| format resource }
+      else
+        response[:body] = { message: response[:body] }
+      end
+      response
+    end
+
+    def find(id)
+      response = fetch("#{@path}/#{id}")
+      if response[:code] == 200
+        response[:body] = format(JSON.parse(response[:body]))
+      end
+      response
+    end
+
     private
 
     def fetch(path, with_year = false)
