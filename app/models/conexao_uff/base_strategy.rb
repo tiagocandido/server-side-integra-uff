@@ -22,11 +22,10 @@ module ConexaoUff
 
     private
 
-    def fetch(path, with_year = false)
+    def fetch(path)
       options = { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } }
-      year_options = { body: {por_anosemestres: '20151'} }
 
-      options.merge year_options if with_year
+      options.merge @fetch_options if @fetch_options
 
       response = HTTParty.get(ConexaoUff::API_URL + path, { headers: { 'AUTHORIZATION' => "Token token=#{@params[:token]}" } })
 
