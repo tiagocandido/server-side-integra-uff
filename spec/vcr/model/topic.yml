@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://homologacao.sti.uff.br/conexaouff/api/v1//topicos/2990
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Token token=9607a550a7504b2879c0d0b1b656d6efb9032c8d
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 13 Aug 2016 22:34:48 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - d0e80e71-1f1f-400d-826c-045218b0317b
+      X-Runtime:
+      - '0.052596'
+      X-Powered-By:
+      - Phusion Passenger 4.0.53
+      Set-Cookie:
+      - _conexao_uff_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFVEkiJTY3ZWE3NzVmMTgxMmI2ZGU3NDA1N2Q1MGMyNmU2ODIyBjsAVEkiCmlkdWZmBjsARkkiEDA3MzAwMzUzNjA2BjsAVA%3D%3D--64f4b7d4f83fb3835770b27dca190e9c16821180;
+        path=/; HttpOnly
+      Etag:
+      - W/"d5190c340fa1a9109e4d764980ac7f93"
+      Status:
+      - 200 OK
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"id":2990,"nome":"Aula de 20/05","aberto":true,"grupo_id":43813,"usuario_id":27917,"created_at":"19/05/2013
+        07:43PM","updated_at":"19/05/2013 07:43PM","respostas_count":1,"status":"Inativo","improprio":false,"ultima_resposta":"19/05/2013
+        07:43PM", "usuario": { "nome": "Ariel Levy" }, "respostas": [{
+        "id": 6283,
+        "corpo": "Devagar retomamos as atividades normalizando nosso curso.\nSeria muito importante que a turma estivesse presente em peso amanhã 20/05 no horário das 18:00 na sala 602 da EST.\nTiraremos as dúvidas sobre os trabalhos e retomaremos as atividades normais a partir de 27/05.\nObrigado\nAriel Levy",
+        "topico_id": 2990,
+        "usuario_id": 27917,
+        "created_at": "19/05/2013 07:43PM",
+        "updated_at": "19/05/2013 07:43PM",
+        "improprio": false,
+        "usuario": {
+          "nome": "Ariel Levy"
+        }
+      }
+    ]}'
+    http_version:
+  recorded_at: Sat, 13 Aug 2016 22:34:48 GMT
+recorded_with: VCR 2.9.3
