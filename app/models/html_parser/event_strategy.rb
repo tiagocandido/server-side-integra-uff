@@ -10,13 +10,13 @@ module HtmlParser
 
     def all
       response = fetch
-      response[:body] = response[:body].map { |resource| format resource }
+      response[:body] = response[:body].map { |resource| format resource } if response[:code] == 200
       response
     end
 
     def find(id)
       response = fetch
-      response[:body] = format(response[:body].css("##{id}").first)
+      response[:body] = format(response[:body].css("##{id}").first) if response[:code] == 200
       response
     end
 
@@ -25,8 +25,8 @@ module HtmlParser
       def fetch
         page = HTTParty.get(@url)
         { code: 200, body: Nokogiri::HTML(page).css('.event') }
-      rescue(message)
-        { code: 400, body: 'Bad request: ' + message }
+      rescue
+        { code: 400, body: 'Bad request' }
       end
 
       def format(event)
