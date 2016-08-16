@@ -176,6 +176,7 @@ DEPENDENCIES
   httparty
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   pry-byebug
   rack-cors
   rails (= 4.2.1)
@@ -187,3 +188,6 @@ DEPENDENCIES
   vcr
   web-console (~> 2.0)
   webmock
+
+BUNDLED WITH
+   1.12.5
