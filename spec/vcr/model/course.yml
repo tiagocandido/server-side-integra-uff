@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:3001/api/v1//grupos/77947
+    uri: http://homologacao.sti.uff.br/conexaouff/api/v1//grupos/77947
     body:
       encoding: UTF-8
       string: por_anosemestres=20151
@@ -52,6 +52,6 @@ http_interactions:
         LTIwMTUxIiwic3RhdHVzIjoiQXRpdm8iLCJhbm9zZW1lc3RyZSI6IjIwMTUv
         MSIsImJpYmxpb2dyYWZpYSI6IkFpbmRhIG7Do28gaW5mb3JtYWRhLiIsImV2
         ZW50b3NfY291bnQiOjEsInR1cm1hX2lkIjpudWxsfQ==
-    http_version: 
+    http_version:
   recorded_at: Mon, 27 Jul 2015 20:46:00 GMT
 recorded_with: VCR 2.9.3
