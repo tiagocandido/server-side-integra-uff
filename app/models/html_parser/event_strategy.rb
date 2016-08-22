@@ -1,34 +1,11 @@
 module HtmlParser
-  require 'nokogiri'
-
-  class EventStrategy
-    include HTTParty
-
+  class EventStrategy < BaseStrategy
     def initialize(params)
-      @url = params[:url]
-    end
-
-    def all
-      response = fetch
-      response[:body] = response[:body].map { |resource| format resource } if response[:code] == 200
-      response
-    end
-
-    def find(id)
-      response = fetch
-      response[:body] = format(response[:body].css("##{id}").first) if response[:code] == 200
-      response
+      super(params)
+      @dom_class = '.event'
     end
 
     private
-
-      def fetch
-        page = HTTParty.get(@url)
-        { code: 200, body: Nokogiri::HTML(page).css('.event') }
-      rescue
-        { code: 400, body: 'Bad request' }
-      end
-
       def format(event)
         {
           id: "html_parser-#{@url}-#{event.attr('id')}",
